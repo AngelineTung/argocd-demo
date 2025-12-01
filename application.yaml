@@ -1,18 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: demo-nginx-webapp
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
+  name: angeline-app
 spec:
   project: default
   source:
-    path: manifests/nginx-webapp
-    repoURL: https://github.com/slim-sandbox/argocd-demo.git
-    targetRevision: HEAD
+    repoURL: "https://github.com/your-org/your-repo.git"
+    targetRevision: main
+    path: <path_to_manifest_directory> (depends on which folder it's in)
   destination:
-    namespace: demo
     server: https://kubernetes.default.svc
+    namespace: angeline-ns
   syncPolicy:
     syncOptions:
     - CreateNamespace=true
